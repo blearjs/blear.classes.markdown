@@ -16,7 +16,9 @@
   "main": "src/index.js",
   "keywords": [
     "blear",
-    "__template__",
+    "classes",
+    "markdown",
+    "marked",
     "cloudcome",
     "ydr.me"
   ],
