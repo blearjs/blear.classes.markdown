@@ -3,20 +3,52 @@
 
 var Events = require('blear.classes.events');
 var object = require('blear.utils.object');
+var string = require('blear.utils.string');
 
 var marked = require('./_marked');
 
+
 var defaults = {
     /**
+     * github 风格的 markdown
      * @link https://help.github.com/articles/github-flavored-markdown
      * @type Boolean
      */
     gfm: true,
+
+    /**
+     * 是否显示表格
+     * @type Boolean
+     */
     tables: true,
+
+    /**
+     * 是否显示断行
+     * type Boolean
+     */
     breaks: true,
+
+    /**
+     * 是否非完整匹配模式
+     * @type Boolean
+     */
     pedantic: false,
+
+    /**
+     * 是否过滤 HTML
+     */
     sanitize: false,
+
+    /**
+     * 是否智能列表
+     * @type Boolean
+     */
     smartLists: true,
+
+    /**
+     * 是否智能修正模式
+     * @type Boolean
+     */
     smartypants: false
 };
 var Markdown = Events.extend({
@@ -25,7 +57,7 @@ var Markdown = Events.extend({
         var the = this;
 
         the[_options] = object.assign({}, defaults, options);
-        the[_options].renderer = new marked.Renderer();
+        the[_options].renderer = the[_renderer] = new marked.Renderer();
     },
 
 
@@ -48,6 +80,7 @@ var Markdown = Events.extend({
      * @returns {Markdown}
      */
     renderer: function (type, renderer) {
+        this[_renderer][type] = renderer;
         return this;
     },
 
@@ -58,7 +91,7 @@ var Markdown = Events.extend({
      * @returns {String} html
      */
     render: function (markdown) {
-        return marked(markdown, this[_options]);
+        return string.trim(marked(markdown, this[_options]));
     },
 
 
@@ -69,6 +102,7 @@ var Markdown = Events.extend({
         Markdown.parent.destroy(this)
     }
 });
+var _renderer = Markdown.sole();
 var _options = Markdown.sole();
 
 
