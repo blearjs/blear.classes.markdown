@@ -37,7 +37,7 @@ var defaults = {
      * 是否显示断行
      * type Boolean
      */
-    breaks: true,
+    breaks: false,
 
     /**
      * 是否非完整匹配模式
