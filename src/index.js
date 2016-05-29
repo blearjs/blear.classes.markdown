@@ -64,17 +64,6 @@ var Markdown = Events.extend({
 
     /**
      * 自定义渲染方式
-     * - `code(string code, string language)`
-     * - `blockquote(string quote)`
-     * - `html(string html)`
-     * - `heading(string text, number level)`
-     * - `hr()`
-     * - `list(string body, boolean ordered)`
-     * - `listitem(string text)`
-     * - `paragraph(string text)`
-     * - `table(string header, string body)`
-     * - `tablerow(string content)`
-     * - `tablecell(string content, object flags)`
      *
      * @param type
      * @param renderer

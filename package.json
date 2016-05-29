@@ -1,6 +1,6 @@
 {
   "name": "blear.classes.markdown",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "markdown 解析与渲染",
   "scripts": {
     "live": "browser-sync start --config bs-config.js",

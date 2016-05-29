@@ -80,6 +80,14 @@ var markdown = new Markdown(options);
 - `table(string header, string body)`
 - `tablerow(string content)`
 - `tablecell(string content, object flags)`
+- `strong(string text)`
+- `em(string text)`
+- `codespan(string text)`
+- `br(string text)`
+- `del(string text)`
+- `link(string href, string title, string text)`
+- `image(string href, string title, string text)`
+- `text(string text)`
      
      
 ```
