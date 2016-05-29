@@ -60,7 +60,13 @@ var defaults = {
      * 是否智能修正模式
      * @type Boolean
      */
-    smartypants: false
+    smartypants: false,
+    
+    /**
+    * 是否支持图片尺寸
+    * @type Boolean
+    */
+    imageSizeable: true
 };
 var markdown = new Markdown(options);
 ```

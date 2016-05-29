@@ -7,7 +7,7 @@ var string = require('blear.utils.string');
 
 var marked = require('./_marked');
 
-
+var reImageSize = /(?:\s+?=\s*?(\d+)(?:[x*×](\d+))?)?$/i;
 var defaults = {
     /**
      * github 风格的 markdown
@@ -49,7 +49,13 @@ var defaults = {
      * 是否智能修正模式
      * @type Boolean
      */
-    smartypants: false
+    smartypants: false,
+
+    /**
+     * 是否支持图片尺寸
+     * @type Boolean
+     */
+    imageSizeable: true
 };
 var Markdown = Events.extend({
     className: 'Markdown',
@@ -59,6 +65,31 @@ var Markdown = Events.extend({
         Markdown.parent(the);
         the[_options] = object.assign({}, defaults, options);
         the[_options].renderer = the[_renderer] = new marked.Renderer();
+
+        if (the[_options].imageSizeable) {
+            the[_renderer].image = function (src, title, alt) {
+                src = src || '';
+
+                var width = null;
+                var height = null;
+
+                src.replace(reImageSize, function (source, _width, _height) {
+                    width = _width;
+                    height = _height;
+                    return '';
+                });
+
+                return ''.concat(
+                    '<img',
+                    src ? ' src="' + src + '"' : '',
+                    width ? ' width="' + width + '"' : '',
+                    height ? ' height="' + height + '"' : '',
+                    title ? ' title="' + title + '"' : '',
+                    alt ? ' alt="' + alt + '"' : '',
+                    '>'
+                );
+            }
+        }
     },
 
 
