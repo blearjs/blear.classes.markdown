@@ -1,5 +1,7 @@
 # blear.classes.markdown
 
+reference <https://github.com/chjj/marked>
+
 [![npm module][npm-img]][npm-url]
 [![build status][travis-img]][travis-url]
 [![coverage][coveralls-img]][coveralls-url]
