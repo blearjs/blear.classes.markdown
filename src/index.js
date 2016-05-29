@@ -56,6 +56,7 @@ var Markdown = Events.extend({
     constructor: function (options) {
         var the = this;
 
+        Markdown.parent(the);
         the[_options] = object.assign({}, defaults, options);
         the[_options].renderer = the[_renderer] = new marked.Renderer();
     },
