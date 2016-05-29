@@ -73,7 +73,7 @@ var Markdown = Events.extend({
                 var width = null;
                 var height = null;
 
-                src.replace(reImageSize, function (source, _width, _height) {
+                src = src.replace(reImageSize, function (source, _width, _height) {
                     width = _width;
                     height = _height;
                     return '';

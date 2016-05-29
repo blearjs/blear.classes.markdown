@@ -40,4 +40,14 @@ describe('测试文件', function () {
         expect(html).toEqual(expected);
         expect(html2).toEqual(expected2);
     });
+
+    it('imageable', function () {
+        var markdown = '![](a)![](b =1)![](c =2x3)';
+        var md = new Markdown();
+        var html = md.render(markdown);
+
+        expect(html).toMatch(/<img[^>]*?src="a"[^>]*?>/);
+        expect(html).toMatch(/<img[^>]*?src="b"[^>]*?width="1"[^>]*?>/);
+        expect(html).toMatch(/<img[^>]*?src="c"[^>]*?width="2" height="3"[^>]*?>/);
+    });
 });
