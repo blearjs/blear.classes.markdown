@@ -41,7 +41,7 @@ describe('测试文件', function () {
         expect(html2).toEqual(expected2);
     });
 
-    it('imageable', function () {
+    it('img', function () {
         var markdown = '![](a)![](b =1)![](c =2x3)';
         var md = new Markdown();
         var html = md.render(markdown);
@@ -49,5 +49,15 @@ describe('测试文件', function () {
         expect(html).toMatch(/<img[^>]*?src="a"[^>]*?>/);
         expect(html).toMatch(/<img[^>]*?src="b"[^>]*?width="1"[^>]*?>/);
         expect(html).toMatch(/<img[^>]*?src="c"[^>]*?width="2" height="3"[^>]*?>/);
+    });
+
+    it('link', function () {
+        var md = new Markdown();
+
+        expect(md.render('<http://a.com>')).toMatch(/>a\.com<\/a>/);
+        expect(md.render('<https://a.com>')).toMatch(/>a\.com<\/a>/);
+        expect(md.render('<https://a.b.com>')).toMatch(/>a\.b\.com<\/a>/);
+        expect(md.render('<https://a.b.com/d/e/f/>')).toMatch(/>a\.b\.com<\/a>/);
+        expect(md.render('<https://a.b.com:1991/d/e/f/>')).toMatch(/>a\.b\.com:1991<\/a>/);
     });
 });
