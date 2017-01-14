@@ -107,6 +107,6 @@ var Markdown = Events.extend({
 var _renderer = Markdown.sole();
 var _options = Markdown.sole();
 
-
+Markdown.marked = marked;
 Markdown.defaults = defaults;
 module.exports = Markdown;
