@@ -866,24 +866,36 @@ Renderer.prototype.del = function (text) {
 
 var autoLinkDomainRE = /^(?:[\w]+:)?\/\/([^\/]*)/;
 Renderer.prototype.link = function (href, title, text, autoLink) {
-    if (this.options.sanitize) {
+    var out = '';
+    var options = this.options;
+
+    if (options.sanitize) {
         try {
             var prot = decodeURIComponent(unescape(href))
                 .replace(/[^\w:]/g, '')
                 .toLowerCase();
         } catch (e) {
-            return '';
+            return out;
         }
         if (prot.indexOf('javascript:') === 0 || prot.indexOf('vbscript:') === 0) {
-            return '';
+            return out;
         }
     }
-    var out = '<a href="' + href + '"';
+
+    if (options.linkFavicon) {
+        out += '<img class="' + options.linkFaviconClass + '"' +
+            ' src="' + options.linkFavicon + href + '"' +
+            ' width="16" height="16" alt="favicon"' +
+            (options.xhtml ? '/>' : '>');
+    }
+
+    out += '<a href="' + href + '"';
+
     if (title) {
         out += ' title="' + title + '"';
     }
 
-    if (this.options.shortAutoLink && autoLink) {
+    if (options.shortAutoLink && autoLink) {
         var matches = text.match(autoLinkDomainRE);
 
         if (matches) {

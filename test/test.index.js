@@ -51,6 +51,15 @@ describe('测试文件', function () {
         expect(html).toMatch(/<img[^>]*?src="c"[^>]*?width="2" height="3"[^>]*?>/);
     });
 
+    it('link favicon', function () {
+        var md = new Markdown();
+
+        expect(md.render('<http://baidu.com/>')).toEqual(
+            '<p><img class="favicon" src="https://f.ydr.me/http://baidu.com/" width="16" height="16" alt="favicon">' +
+            '<a href="http://baidu.com/">baidu.com</a></p>'
+        );
+    });
+
     it('link', function () {
         var md = new Markdown();
 
