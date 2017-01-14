@@ -51,25 +51,6 @@ var defaults = {
     smartypants: false,
 
     /**
-     * 是否自动缩短自动链接
-     * <http://x.a.b/c/d/e/f> => <a href="http://x.a.b/c/d/e/f">x.a.b</a>
-     * @type Boolean
-     */
-    shortAutoLink: true,
-
-    /**
-     * 是否启用链接 favicon
-     * @type String|null
-     */
-    linkFavicon: 'https://f.ydr.me/',
-
-    /**
-     * <img favicon 的 className
-     * @type String
-     */
-    linkFaviconClass: 'favicon',
-
-    /**
      * pre 语言前缀
      * @type String
      */
