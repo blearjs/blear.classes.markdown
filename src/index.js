@@ -55,7 +55,13 @@ var defaults = {
      * <http://x.a.b/c/d/e/f> => <a href="http://x.a.b/c/d/e/f">x.a.b</a>
      * @type Boolean
      */
-    shortAutoLink: true
+    shortAutoLink: true,
+
+    /**
+     * pre 语言前缀
+     * @type String
+     */
+    langPrefix: 'lang-'
 };
 var Markdown = Events.extend({
     className: 'Markdown',

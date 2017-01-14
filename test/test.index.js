@@ -60,4 +60,12 @@ describe('测试文件', function () {
         expect(md.render('<https://a.b.com/d/e/f/>')).toMatch(/>a\.b\.com<\/a>/);
         expect(md.render('<https://a.b.com:1991/d/e/f/>')).toMatch(/>a\.b\.com:1991<\/a>/);
     });
+
+    it('pre', function () {
+        var md = new Markdown();
+
+        expect(md.render('```js\n' +
+            'a\n' +
+            '```')).toMatch(/<pre class="lang-js"><code>a\n<\/code><\/pre>/);
+    });
 });

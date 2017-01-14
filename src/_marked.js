@@ -777,7 +777,7 @@ Renderer.prototype.code = function (code, lang, escaped) {
 
     var className = lang ? this.options.langPrefix + escape(lang, true) : '';
 
-    return '<pre><code class="' + className + '">'
+    return '<pre class="' + className + '"><code>'
         + (escaped ? code : escape(code, true))
         + '\n</code></pre>\n';
 };
