@@ -52,10 +52,18 @@ describe('测试文件', function () {
     });
 
     it('link favicon', function () {
-        var md = new Markdown();
+        var md1 = new Markdown();
+        var md2 = new Markdown({
+            linkFavicon: false
+        });
 
-        expect(md.render('<http://baidu.com/>')).toEqual(
-            '<p><img class="favicon" src="https://f.ydr.me/http://baidu.com/" width="16" height="16" alt="favicon">' +
+        expect(md1.render('<http://baidu.com/>')).toEqual(
+            '<p>' +
+            '<img class="favicon" src="https://f.ydr.me/http://baidu.com/" width="16" height="16" alt="favicon">' +
+            '<a href="http://baidu.com/">baidu.com</a></p>'
+        );
+        expect(md2.render('<http://baidu.com/>')).toEqual(
+            '<p>' +
             '<a href="http://baidu.com/">baidu.com</a></p>'
         );
     });
