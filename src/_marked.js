@@ -2,6 +2,7 @@
  * 修改了 Renderer.prototype.code
  * 修改了 Renderer.prototype.image
  * 修改了 Renderer.prototype.link(href, title, text, auto)
+ * 修改了 InlineLexer.prototype.mangle
  *
  * marked - a markdown parser
  * Copyright (c) 2011-2014, Christopher Jeffrey. (MIT Licensed)
@@ -752,9 +753,10 @@ InlineLexer.prototype.mangle = function (text) {
 
     for (; i < l; i++) {
         ch = text.charCodeAt(i);
-        if (Math.random() > 0.5) {
-            ch = 'x' + ch.toString(16);
-        }
+        // 取消随机变化，保证前后内容一致，缓存
+        // if (Math.random() > 0.5) {
+        //     ch = 'x' + ch.toString(16);
+        // }
         out += '&#' + ch + ';';
     }
 
