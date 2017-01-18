@@ -2,7 +2,7 @@
  * 修改了 Renderer.prototype.code
  * 修改了 Renderer.prototype.image
  * 修改了 Renderer.prototype.link(href, title, text, auto)
- * 修改了 InlineLexer.prototype.mangle
+ * 删除了 InlineLexer.prototype.mangle
  *
  * marked - a markdown parser
  * Copyright (c) 2011-2014, Christopher Jeffrey. (MIT Licensed)
@@ -587,10 +587,10 @@ InlineLexer.prototype.output = function (src) {
             // 如果 @ 符合前面没有 / ，则是一个邮箱地址
             // @update 2017年01月18日11:29:46
             if (cap[2] === '@' && !/\/.*?@/.test(cap[1])) {
-                text = cap[1].charAt(6) === ':'
-                    ? this.mangle(cap[1].substring(7))
-                    : this.mangle(cap[1]);
-                href = this.mangle('mailto:') + text;
+                href = cap[1].charAt(6) === ':'
+                    ? cap[1]
+                    : 'mailto:' + cap[1];
+                text = href;
             } else {
                 text = escape(cap[1]);
                 href = text;
@@ -740,28 +740,27 @@ InlineLexer.prototype.smartypants = function (text) {
         .replace(/\.{3}/g, '\u2026');
 };
 
-/**
- * Mangle Links
- */
-
-InlineLexer.prototype.mangle = function (text) {
-    if (!this.options.mangle) return text;
-    var out = ''
-        , l = text.length
-        , i = 0
-        , ch;
-
-    for (; i < l; i++) {
-        ch = text.charCodeAt(i);
-        // 取消随机变化，保证前后内容一致，缓存
-        // if (Math.random() > 0.5) {
-        //     ch = 'x' + ch.toString(16);
-        // }
-        out += '&#' + ch + ';';
-    }
-
-    return out;
-};
+// /**
+//  * Mangle Links
+//  */
+//
+// InlineLexer.prototype.mangle = function (text) {
+//     if (!this.options.mangle) return text;
+//     var out = ''
+//         , l = text.length
+//         , i = 0
+//         , ch;
+//
+//     for (; i < l; i++) {
+//         ch = text.charCodeAt(i);
+//         // if (Math.random() > 0.5) {
+//         //     ch = 'x' + ch.toString(16);
+//         // }
+//         out += '&#' + ch + ';';
+//     }
+//
+//     return out;
+// };
 
 /**
  * Renderer
