@@ -64,7 +64,7 @@ describe('测试文件', function () {
         var mkd = '<123@123.com>';
         var html = md.render(mkd);
 
-        expect(html).toMatch('<a href="&#');
+        expect(html).toMatch('<a href="mailto:');
     });
 
     it('pre', function () {
