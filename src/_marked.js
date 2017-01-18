@@ -582,7 +582,10 @@ InlineLexer.prototype.output = function (src) {
         // autolink
         if (cap = this.rules.autolink.exec(src)) {
             src = src.substring(cap[0].length);
-            if (cap[2] === '@') {
+            // <http://a.com/@123>
+            // 如果 @ 符合前面没有 / ，则是一个邮箱地址
+            // @update 2017年01月18日11:29:46
+            if (cap[2] === '@' && !/\/.*?@/.test(cap[1])) {
                 text = cap[1].charAt(6) === ':'
                     ? this.mangle(cap[1].substring(7))
                     : this.mangle(cap[1]);

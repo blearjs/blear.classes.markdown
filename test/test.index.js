@@ -51,6 +51,22 @@ describe('测试文件', function () {
         expect(html).toMatch(/<img[^>]*?src="c"[^>]*?width="2" height="3"[^>]*?>/);
     });
 
+    it('auto link url with @', function () {
+        var md = new Markdown();
+        var mkd = '<http://a.com/@123>';
+        var html = md.render(mkd);
+
+        expect(html).toMatch('<a href="http://a.com/@123">');
+    });
+
+    it('auto link mailto', function () {
+        var md = new Markdown();
+        var mkd = '<123@123.com>';
+        var html = md.render(mkd);
+
+        expect(html).toMatch('<a href="&#');
+    });
+
     it('pre', function () {
         var md = new Markdown();
 
