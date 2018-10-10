@@ -13,7 +13,7 @@
 var array = require('blear.utils.array');
 var object = require('blear.utils.object');
 
-var rendererRule = require('../renderer-rule');
+var rendererRule = require('../utils/renderer-rule');
 
 var defaults = {
     theme: 'light'

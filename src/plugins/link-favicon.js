@@ -10,7 +10,7 @@
 
 var url = require('blear.utils.url');
 
-var rendererRule = require('../renderer-rule');
+var rendererRule = require('../utils/renderer-rule');
 
 module.exports = function (md, options) {
     var render = rendererRule(md, 'link_open');

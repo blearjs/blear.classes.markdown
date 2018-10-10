@@ -32,8 +32,6 @@ describe('测试文件', function () {
         var html = md.render(markdown);
 
         console.log(html);
-        expect(html).toMatch(/<pre><code class="language-js"/);
-        expect(html).toMatch(/<pre><code class="language-xxx"/);
     });
 
     it('image size', function () {
@@ -89,5 +87,31 @@ describe('测试文件', function () {
 
         console.log(html);
     });
+
+    it('anchor', function () {
+        var markdown = '' +
+            '# h1\n\n' +
+            '## 你好' +
+            '';
+        var md = new Markdown();
+        md.use(require('../src/plugins/anchor'));
+        var html = md.render(markdown);
+
+        console.log(html);
+    });
+
+    it('toc', function () {
+        var markdown = '' +
+            '[[toc]]\n\n' +
+            '# h1\n\n' +
+            '## 你好' +
+            '';
+        var md = new Markdown();
+        md.use(require('../src/plugins/toc'));
+        var html = md.render(markdown);
+
+        console.log(html);
+    });
+
 });
 
