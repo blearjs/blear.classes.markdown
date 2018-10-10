@@ -1,7 +1,7 @@
 {
   "name": "blear.classes.markdown",
-  "version": "1.1.6",
-  "description": "markdown 解析与渲染",
+  "version": "2.0.0",
+  "description": "markdown 解析与渲染，基于 markdown-it@8.4.2",
   "scripts": {
     "live": "browser-sync start --config bs-config.js",
     "test": "node ./node_modules/.bin/karma start karma.conf.js --single-run",
