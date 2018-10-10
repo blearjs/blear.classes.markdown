@@ -30,9 +30,7 @@ var defaults = {
      * @param lang
      * @returns {*}
      */
-    highlight: function (str, lang) {
-        return str;
-    }
+    highlight: require('./hightlight')
 };
 var Markdown = Class.ify(MarkdownIt).extend({
     className: 'Markdown',

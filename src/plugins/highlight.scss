@@ -1,0 +1,49 @@
+.highlight {
+  position: relative;
+  margin: 30px 0;
+  font-size: 16px;
+
+  pre,
+  code {
+    background: transparent;
+  }
+
+  pre {
+    margin-left: 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  &-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    line-height: 1.5;
+    color: #999;
+    margin: 0;
+    padding: 20px 0;
+    list-style: none;
+
+    li {
+      margin: 0;
+      padding: 0 0 0 10px;
+    }
+  }
+
+  &_light {
+    background: #f5f2f0;
+  }
+
+  &_light &-active {
+    background: #e4d6ac;
+  }
+
+  &_dark {
+    background: #282c34;
+  }
+
+  &_dark &-active {
+    background: #000;
+  }
+}

@@ -19,6 +19,23 @@ describe('测试文件', function () {
         expect(html).toEqual('<p>你好</p>\n');
     });
 
+    it('code highlight', function () {
+        var markdown = '' +
+            '```js\n' +
+            'var a = 1;\n' +
+            '```\n\n' +
+            '```xxx\n' +
+            'ab\n' +
+            '```' +
+            '';
+        var md = new Markdown();
+        var html = md.render(markdown);
+
+        console.log(html);
+        expect(html).toMatch(/<pre><code class="language-js"/);
+        expect(html).toMatch(/<pre><code class="language-xxx"/);
+    });
+
     it('image size', function () {
         var markdown = '![test](image.png =100x200)';
         var md = new Markdown();
@@ -37,6 +54,40 @@ describe('测试文件', function () {
 
         console.log(html);
         expect(html).toEqual('<p><a href="//a.com/b" target="_blank"><img class="favicon" src="https://f.ydr.me/a.com" width="16" height="16">test</a></p>\n');
+    });
+
+    it('highlight-lines', function () {
+        var markdown = '' +
+            '```js {1, 3, 5-9, 11 - 12}\n' +
+            'var a = 1;\n' +
+            'var b = 1;\n' +
+            'var c = 1;\n' +
+            'var d = 1;\n' +
+            'var e = 1;\n' +
+            'var f = 1;\n' +
+            'var g = 1;\n' +
+            'var h = 1;\n' +
+            'var i = 1;\n' +
+            'var j = 1;\n' +
+            'var k = 1;\n' +
+            'var l = 1;\n' +
+            'var m = 1;\n' +
+            'var n = 1;\n' +
+            'var o = 1;\n' +
+            'var p = 1;\n' +
+            'var q = 1;\n' +
+            '```\n\n' +
+            '```xxx\n' +
+            'ab\n' +
+            'cd\n' +
+            'ef\n' +
+            '```' +
+            '';
+        var md = new Markdown();
+        md.use(require('../src/plugins/highlight-lines'));
+        var html = md.render(markdown);
+
+        console.log(html);
     });
 });
 

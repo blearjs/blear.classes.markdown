@@ -10,20 +10,23 @@
 
 var url = require('blear.utils.url');
 
+var rendererRule = require('../renderer-rule');
 
 module.exports = function (md, options) {
+    var render = rendererRule(md, 'link_open');
+
     md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
         var token = tokens[idx];
         var href = token.attrGet('href');
 
         if (!href) {
-            return self.renderToken(tokens, idx, options, env, self)
+            return render(tokens, idx, options, env, self);
         }
 
         var pt = url.parse(href);
 
         if (!pt.host) {
-            return self.renderToken(tokens, idx, options, env, self)
+            return render(tokens, idx, options, env, self);
         }
 
         var attrs = [];
