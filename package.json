@@ -4,7 +4,7 @@
   "description": "markdown 解析与渲染，基于 markdown-it@8.4.2",
   "scripts": {
     "live": "browser-sync start --config bs-config.js",
-    "test": "node ./node_modules/.bin/karma start karma.conf.js --single-run",
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha test/**/test.*.js",
     "prepublish": "npm test"
   },
   "preferGlobal": false,
