@@ -13,7 +13,10 @@ var plugin = require('markdown-it-anchor');
 
 var defaults = {
     level: 1,
-    slugify: require('../utils/slugify')
+    slugify: require('../utils/slugify'),
+    permalink: true,
+    permalinkClass: 'anchor',
+    permalinkBefore: true
 };
 
 module.exports = function (md, configs) {
