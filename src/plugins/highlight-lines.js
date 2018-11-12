@@ -57,11 +57,11 @@ module.exports = function (md, configs) {
         for (var lineNumber = 1; lineNumber < max; lineNumber++) {
             var classSuffix = inRange(lineNumber) ? 'active' : 'placeholder';
 
-            lines += '<li class="highlight-' + classSuffix + '">' + lineNumber + '</li>';
+            lines += '<div class="highlight-' + classSuffix + '">' + lineNumber + '</div>';
         }
 
         return '<div class="highlight highlight_' + configs.theme + '">' +
-            '<ol class="highlight-lines">' + lines + '</ol>' +
+            '<div class="highlight-lines">' + lines + '</div>' +
             html +
             '</div>';
     };
