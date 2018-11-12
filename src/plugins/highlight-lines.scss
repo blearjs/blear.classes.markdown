@@ -5,13 +5,14 @@
 
   pre,
   code {
-    background: transparent;
+    background: transparent !important;
   }
 
   pre {
     margin-left: 40px;
     position: relative;
     z-index: 1;
+    padding-left: 0;
   }
 
   &-lines {
