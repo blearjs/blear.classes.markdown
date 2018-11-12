@@ -1,28 +1,31 @@
 .highlight {
   position: relative;
   margin: 30px 0;
-  font-size: 16px; }
+  font-size: 16px;
+  line-height: 1.5; }
   .highlight pre,
   .highlight code {
     background: transparent !important; }
   .highlight pre {
     margin-left: 40px;
     position: relative;
-    z-index: 1;
-    padding-left: 0; }
+    z-index: 1; }
+  .highlight_light pre {
+    border-left: 1px solid #e4dbd5; }
+  .highlight_dark pre {
+    border-left: 1px solid #3e434c; }
   .highlight-lines {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    line-height: 1.5;
     color: #999;
     margin: 0;
-    padding: 20px 0;
+    padding: 20px 10px;
     list-style: none; }
-    .highlight-lines li {
-      margin: 0;
-      padding: 0 0 0 10px; }
+  .highlight-placeholder {
+    margin: 0;
+    padding: 0 0 0 15px; }
   .highlight_light {
     background: #f5f2f0; }
   .highlight_light .highlight-active {
