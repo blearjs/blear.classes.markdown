@@ -37,6 +37,7 @@ var Markdown = Class.ify(MarkdownIt).extend({
     constructor: function (option) {
         this[_options] = object.assign({}, defaults, option);
         this[_markdown] = new MarkdownIt(this[_options]);
+        this[_markdown].use(require('markdown-it-multimd-table'));
     },
 
 
