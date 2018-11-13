@@ -113,5 +113,16 @@ describe('测试文件', function () {
         console.log(html);
     });
 
+    it('mention', function () {
+        var markdown = '' +
+            '[@a](/a) 我<b>123</b> @some @one 你 [@b](/b)'+
+            '';
+        var md = new Markdown();
+        md.use(require('../src/plugins/mention'));
+        var html = md.render(markdown);
+
+        console.log(html);
+    });
+
 });
 
