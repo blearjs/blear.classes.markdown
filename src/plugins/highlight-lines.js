@@ -25,8 +25,7 @@ module.exports = function (md, configs) {
 
     md.renderer.rules.fence = function (tokens, idx, options, env, self) {
         var token = tokens[idx];
-        var info = token.info || '';
-
+        var info = token.info || 'plain';
         var matches = info.match(/^([^{\s]+)\s*?(?:{([\d\s,-]+)})?$/);
         var lang = matches[1];
         var lineNumbers = (matches[2] || '').split(/\s*,\s*/).map(function (range) {
