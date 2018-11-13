@@ -12,7 +12,7 @@ var object = require('blear.utils.object');
 var plugin = require('markdown-it-toc-done-right');
 
 var defaults = {
-    placeholder: '[[toc]]',
+    placeholder: '[toc]',
     slugify: require('../utils/slugify'),
     containerClass: 'toc',
     listType: 'ol'
