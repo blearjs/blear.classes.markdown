@@ -43,6 +43,7 @@
     "blear.utils.object": "^1.0.14",
     "blear.utils.string": "^1.0.10",
     "blear.utils.url": "^1.0.19",
+    "language-classifier": "0.0.1",
     "markdown-it": "^8.4.2",
     "markdown-it-anchor": "^5.0.2",
     "markdown-it-for-inline": "^0.1.1",

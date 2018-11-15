@@ -12,6 +12,7 @@
 
 var array = require('blear.utils.array');
 var object = require('blear.utils.object');
+var language = require('language-classifier');
 
 var rendererRule = require('../utils/renderer-rule');
 
@@ -20,12 +21,10 @@ var defaults = {
 };
 
 module.exports = function (md, configs) {
-    var render = rendererRule(md, 'fence');
     configs = object.assign({}, defaults, configs);
-
     md.renderer.rules.fence = function (tokens, idx, options, env, self) {
         var token = tokens[idx];
-        var info = token.info || 'plain';
+        var info = token.info || language(token.content) || 'plain';
         var matches = info.match(/^([^{\s]+)\s*?(?:{([\d\s,-]+)})?$/);
         var lang = matches[1];
         var lineNumbers = (matches[2] || '').split(/\s*,\s*/).map(function (range) {
