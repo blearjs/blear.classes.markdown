@@ -11,7 +11,7 @@ var expect = require('chai-jasmine').expect;
 var Markdown = require('../src/index.js');
 
 describe('测试文件', function () {
-    it('base', function () {
+    it('basic', function () {
         var markdown = '你好';
         var md = new Markdown();
         var html = md.render(markdown);
@@ -115,8 +115,10 @@ describe('测试文件', function () {
 
     it('mention', function () {
         var markdown = '' +
-            '[@a](/a) 我<b>123</b> @some @one 你 [@b](/b)'+
-            '';
+            '[@a](/a) 我<b>123</b> @some @one 你 [@b](/b)\n\n'+
+            '```\n' +
+            '@abc\n' +
+            '```\n';
         var md = new Markdown();
         md.use(require('../src/plugins/mention'));
         var html = md.render(markdown);
