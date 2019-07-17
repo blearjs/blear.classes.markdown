@@ -22,10 +22,11 @@ module.exports = function (md, configs) {
     configs = object.assign({}, defaults, configs);
     md.renderer.rules.fence = function (tokens, idx, options, env, self) {
         var token = tokens[idx];
-        var info = (token.info || language(token.content) || 'plain').trim();
+        var dftLang = 'plain';
+        var info = (token.info.trim() || language(token.content) || dftLang).trim();
         var matches = info.match(/^([^{\s]+)\s*?(?:{([\d\s,-]+)})?$/);
-        var lang = matches[1];
-        var lineNumbers = (matches[2] || '').split(/\s*,\s*/).map(function (range) {
+        var lang = matches && matches[1] || dftLang;
+        var lineNumbers = (matches && matches[2] || '').split(/\s*,\s*/).map(function (range) {
             var slices = range.split(/\s*-\s*/);
             slices[1] = slices[1] || slices[0];
             return slices;

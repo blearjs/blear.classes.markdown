@@ -58,7 +58,7 @@ var Markdown = Class.ify(MarkdownIt).extend({
      * @returns {*|String}
      */
     render: function (markdown) {
-        return this[_markdown].render(markdown);
+        return this[_markdown].render(markdown || '');
     }
 });
 var sole = Markdown.sole;

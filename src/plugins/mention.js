@@ -18,7 +18,10 @@ var defaults = {
     parseURL: function (username) {
         return '/user/' + encodeURIComponent(username);
     },
-    external: false
+    external: false,
+    onMention: function (username) {
+        // ...
+    }
 };
 
 module.exports = function (md, configs) {
@@ -40,13 +43,22 @@ module.exports = function (md, configs) {
 
     md.use(iterator, 'foo_replace', 'text', function (tokens, idx) {
         var token = tokens[idx];
+        var regexp = configs.regexp;
 
-        if (token.level === 0) {
-            token.content = md.utils.escapeHtml(token.content);
-            token.content = token.content.replace(configs.regexp, function ($0, username) {
-                return render(username.trim());
-            });
-            token.type = 'html_inline';
+        if (token.level !== 0) {
+            return token;
         }
+
+        if (!regexp.test(token.content)) {
+            return token;
+        }
+
+        token.content = md.utils.escapeHtml(token.content);
+        token.content = token.content.replace(regexp, function ($0, username) {
+            username = username.trim();
+            username = configs.onMention(username) || username;
+            return render(username);
+        });
+        token.type = 'html_inline';
     });
 };
