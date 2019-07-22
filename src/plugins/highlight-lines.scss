@@ -34,7 +34,8 @@
     list-style: none;
   }
 
-  &-placeholder {
+  &-placeholder,
+  &-active {
     margin: 0;
     padding: 0 0 0 15px;
   }
@@ -43,7 +44,7 @@
     background: #f5f2f0;
   }
 
-  &_light &-active {
+  &_light &-placeholder_active {
     background: #e4d6ac;
   }
 
@@ -51,7 +52,7 @@
     background: #282c34;
   }
 
-  &_dark &-active {
+  &_dark &-placeholder_active {
     background: #000;
   }
 }
