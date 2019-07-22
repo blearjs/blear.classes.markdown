@@ -44,7 +44,7 @@
     background: #f5f2f0;
   }
 
-  &_light &-placeholder_active {
+  &_light &-active {
     background: #e4d6ac;
   }
 
@@ -52,7 +52,7 @@
     background: #282c34;
   }
 
-  &_dark &-placeholder_active {
+  &_dark &-active {
     background: #000;
   }
 }

@@ -28,9 +28,9 @@
     padding: 0 0 0 15px; }
   .highlight_light {
     background: #f5f2f0; }
-  .highlight_light .highlight-placeholder_active {
+  .highlight_light .highlight-active {
     background: #e4d6ac; }
   .highlight_dark {
     background: #282c34; }
-  .highlight_dark .highlight-placeholder_active {
+  .highlight_dark .highlight-active {
     background: #000; }
