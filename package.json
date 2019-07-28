@@ -1,7 +1,7 @@
 {
   "name": "blear.classes.markdown",
   "version": "2.1.0",
-  "description": "markdown 解析与渲染，基于 markdown-it@8.4.2",
+  "description": "markdown 解析与渲染，基于 markdown-it@9.0.1",
   "scripts": {
     "live": "browser-sync start --config bs-config.js",
     "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha test/**/test.*.js",
@@ -38,13 +38,13 @@
   },
   "dependencies": {
     "blear.classes.class": "^1.1.7",
+    "blear.ui.code-highlight": "^2.1.4",
     "blear.utils.array": "^1.0.12",
-    "blear.utils.code-highlight": "^2.1.0",
     "blear.utils.object": "^1.0.14",
     "blear.utils.string": "^1.0.10",
     "blear.utils.url": "^1.0.19",
     "language-classifier": "0.0.1",
-    "markdown-it": "^8.4.2",
+    "markdown-it": "9.0.1",
     "markdown-it-anchor": "^5.0.2",
     "markdown-it-for-inline": "^0.1.1",
     "markdown-it-multimd-table": "^3.1.3",

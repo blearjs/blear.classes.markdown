@@ -9,7 +9,7 @@
 'use strict';
 
 
-var codeHighligh = require('blear.utils.code-highlight');
+var codeHighligh = require('blear.ui.code-highlight');
 
 /**
  * 语法高亮
