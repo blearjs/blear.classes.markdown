@@ -115,7 +115,7 @@ describe('测试文件', function () {
 
     it('mention', function () {
         var markdown = '' +
-            '[@a](/a) 我<b>123</b> @some @one 你 [@b](/b)\n\n'+
+            '[@a](/a) 我<b>123</b> pkg@1.1 @some @one 你 [@b](/b)\n\n'+
             '```\n' +
             '@abc\n' +
             '```\n';

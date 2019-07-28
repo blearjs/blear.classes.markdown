@@ -13,7 +13,7 @@ var object = require('blear.utils.object');
 var iterator = require('markdown-it-for-inline');
 
 var defaults = {
-    regexp: /(?:\s|)[@＠]([\w-]+)(?:\s|)/g,
+    regexp: /(?:\s|)[@＠]([a-z][\w-]+)(?:\s|)/ig,
     className: 'mention',
     parseURL: function (username) {
         return '/user/' + encodeURIComponent(username);
