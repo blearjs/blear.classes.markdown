@@ -21,7 +21,7 @@ describe('测试文件', function () {
 
     it('code highlight', function () {
         var markdown = '' +
-            '```js\n' +
+            '```\n' +
             'var a = 1;\n' +
             '```\n\n' +
             '```xxx\n' +

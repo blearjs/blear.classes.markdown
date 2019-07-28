@@ -11,6 +11,8 @@
 
 var codeHighligh = require('blear.ui.code-highlight');
 
+var detect = require('./detect-lang');
+
 /**
  * 语法高亮
  * @param str
@@ -18,5 +20,6 @@ var codeHighligh = require('blear.ui.code-highlight');
  * @returns {string}
  */
 module.exports = function (str, lang) {
+    lang = lang || detect(str) || 'plain';
     return codeHighligh.text(str, lang, true);
 };

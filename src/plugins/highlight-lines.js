@@ -12,7 +12,8 @@
 
 var array = require('blear.utils.array');
 var object = require('blear.utils.object');
-var language = require('language-classifier');
+
+var detect = require('../utils/detect-lang');
 
 var defaults = {
     theme: 'light'
@@ -23,7 +24,7 @@ module.exports = function (md, configs) {
     md.renderer.rules.fence = function (tokens, idx, options, env, self) {
         var token = tokens[idx];
         var dftLang = 'plain';
-        var info = (token.info.trim() || language(token.content) || dftLang).trim();
+        var info = (token.info.trim() || detect(token.content) || dftLang).trim();
         var matches = info.match(/^([^{\s]+)\s*?(?:{([\d\s,-]+)})?$/);
         var lang = matches && matches[1] || dftLang;
         var lineNumbers = (matches && matches[2] || '').split(/\s*,\s*/).map(function (range) {
