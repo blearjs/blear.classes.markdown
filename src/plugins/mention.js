@@ -13,7 +13,7 @@ var object = require('blear.utils.object');
 var iterator = require('markdown-it-for-inline');
 
 var defaults = {
-    regexp: /(?:\s|)[@＠]([a-z][\w-]+)(?:\s|)/ig,
+    regexp: /(\s|)[@＠]([a-z][\w-]+)(\s|)/ig,
     className: 'mention',
     parseURL: function (username) {
         return '/user/' + encodeURIComponent(username);
@@ -26,7 +26,7 @@ var defaults = {
 
 module.exports = function (md, configs) {
     configs = object.assign({}, defaults, configs);
-    var render = function (username) {
+    var render = function (start, username, end) {
         var attrs = [];
         attrs.push('href="' + configs.parseURL(username) + '"');
 
@@ -38,7 +38,7 @@ module.exports = function (md, configs) {
             attrs.push('target="_blank"');
         }
 
-        return '<a ' + attrs.join(' ') + '>@' + username + '</a>';
+        return start + '<a ' + attrs.join(' ') + '>@' + username + '</a>' + end;
     };
 
     md.use(iterator, 'foo_replace', 'text', function (tokens, idx) {
@@ -54,10 +54,10 @@ module.exports = function (md, configs) {
         }
 
         token.content = md.utils.escapeHtml(token.content);
-        token.content = token.content.replace(regexp, function ($0, username) {
+        token.content = token.content.replace(regexp, function (source, start, username, end) {
             username = username.trim();
             username = configs.onMention(username) || username;
-            return render(username);
+            return render(start, username, end);
         });
         token.type = 'html_inline';
     });
