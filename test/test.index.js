@@ -102,7 +102,7 @@ describe('测试文件', function () {
 
     it('toc', function () {
         var markdown = '' +
-            '[[toc]]\n\n' +
+            '[toc]\n\n' +
             '# h1\n\n' +
             '## 你好' +
             '';
