@@ -9,17 +9,21 @@
 'use strict';
 
 
-var codeHighligh = require('blear.ui.code-highlight');
+var string = require('blear.utils.string');
 
 var detect = require('./detect-lang');
 
 /**
  * 语法高亮
- * @param str
+ * @param code
  * @param lang
  * @returns {string}
  */
-module.exports = function (str, lang) {
-    lang = lang || detect(str) || 'plain';
-    return codeHighligh.text(str, lang, true);
+module.exports = function (code, lang, highlight) {
+    lang = lang || detect(code) || 'plain';
+    return string.assign('<pre class="prism" data-language="${l}" data-highlight="${h}"><code>${c}</code></pre>', {
+        l: lang,
+        c: code,
+        h: highlight || ''
+    });
 };

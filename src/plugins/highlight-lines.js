@@ -27,41 +27,9 @@ module.exports = function (md, configs) {
         var info = (token.info.trim() || detect(token.content) || dftLang).trim();
         var matches = info.match(/^([^{\s]+)\s*?(?:{([\d\s,-]+)})?$/);
         var lang = matches && matches[1] || dftLang;
-        var lineNumbers = (matches && matches[2] || '').split(/\s*,\s*/).map(function (range) {
-            var slices = range.split(/\s*-\s*/);
-            slices[1] = slices[1] || slices[0];
-            return slices;
-        });
-        var inRange = function (lineNumber) {
-            var yes = false;
-            array.each(lineNumbers, function (index, slices) {
-                var start = slices[0];
-                var end = slices[1];
+        var lines = matches && matches[2] || '';
 
-                if (lineNumber >= start && lineNumber <= end) {
-                    yes = true;
-                    return false;
-                }
-            });
-            return yes;
-        };
-
-        // 代码和高亮分开
-        var html = options.highlight ? options.highlight(token.content, lang) : token.content;
-        var raw = html.replace(/^<pre[^>]*?><code[^>]*?>/, '');
-        var max = raw.split('\n').length;
-        var lines = '';
-
-        for (var lineNumber = 1; lineNumber < max; lineNumber++) {
-            var classSuffix = inRange(lineNumber) ? 'active' : 'placeholder';
-
-            lines += '<div class="highlight-' + classSuffix + '">' + lineNumber + '</div>';
-        }
-
-        return '<div class="highlight highlight_' + configs.theme + '">' +
-            '<div class="highlight-lines">' + lines + '</div>' +
-            html +
-            '</div>';
+        return options.highlight ? options.highlight(token.content, lang, lines) : token.content;
     };
 };
 
