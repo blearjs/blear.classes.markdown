@@ -23,7 +23,7 @@ module.exports = function (code, lang, highlight) {
     lang = lang || detect(code) || 'plain';
     return string.assign('<pre class="prism" data-language="${l}" data-highlight="${h}"><code>${c}</code></pre>', {
         l: lang,
-        c: code,
+        c: string.escapeHTML(code),
         h: highlight || ''
     });
 };

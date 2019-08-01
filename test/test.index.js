@@ -23,6 +23,7 @@ describe('测试文件', function () {
         var markdown = '' +
             '```\n' +
             'var a = 1;\n' +
+            '<br>\n' +
             '```\n\n' +
             '```xxx\n' +
             'ab\n' +
